@@ -1,7 +1,6 @@
 package edu.austral.ingsis.clifford.commands;
 
 import edu.austral.ingsis.clifford.FileSystem;
-import edu.austral.ingsis.clifford.filesystem.Directory;
 import edu.austral.ingsis.clifford.filesystem.FileSystemItem;
 
 public class PrintWorkingDirectoryCommand implements Command{
@@ -11,12 +10,11 @@ public class PrintWorkingDirectoryCommand implements Command{
         this.fileSystem = fileSystem;
     }
     @Override
-    public void execute(String[] args) {
+    public String execute(String[] args) {
         if (isInvalidInput(args)) {
-            System.out.println("Invalid input");
-            return;
+            return "Invalid input";
         }
-        System.out.println(buildPath(fileSystem.getCurrentDirectory()));
+        return buildPath(fileSystem.getCurrentDirectory());
     }
 
     private String buildPath(FileSystemItem fileSystemItem) {

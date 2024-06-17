@@ -9,23 +9,22 @@ public class RemoveCommand implements Command{
     }
 
     @Override
-    public void execute(String args[]) {
+    public String execute(String[] args) {
         if (isInvalidInput(args)) {
-            System.out.println("Invalid input");
-            return;
+            return "Invalid input";
         }
         if (args.length == 1) {
             if (!exists(args[0])) {
-                System.out.println("File not found");
-                return;
+                return "File not found";
             }
             fileSystem.getCurrentDirectory().removeFileSystemItem(args[0]);
+            return args[0] + " removed";
         } else {
             if (!exists(args[1])) {
-                System.out.println("File not found");
-                return;
+                return "File not found";
             }
             fileSystem.getCurrentDirectory().removeFileSystemItem(args[1]);
+            return args[1] + " removed";
         }
     }
 

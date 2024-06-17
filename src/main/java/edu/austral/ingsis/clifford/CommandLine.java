@@ -1,7 +1,6 @@
 package edu.austral.ingsis.clifford;
 
 import edu.austral.ingsis.clifford.commands.*;
-import edu.austral.ingsis.clifford.filesystem.FileSystemItem;
 
 import java.util.Arrays;
 
@@ -10,31 +9,26 @@ public class CommandLine {
 
     private FileSystem fileSystem;
 
-    public CommandLine(FileSystemItem currentItem) {
+    public CommandLine() {
         this.fileSystem = new FileSystem();
     }
 
-    public void parseCommand(String command) {
+    public String execute(String command) {
         String[] input = command.split(" ");
         String[] args = Arrays.copyOfRange(input, 1, input.length);
         switch (input[0]) {
             case "ls":
-                new ListCommand(fileSystem).execute(args);
-                break;
+                return new ListCommand(fileSystem).execute(args);
             case "cd":
-                new ChangeDirectoryCommand(fileSystem).execute(args);
-                break;
+                return new ChangeDirectoryCommand(fileSystem).execute(args);
             case "touch":
-                new TouchCommand(fileSystem).execute(args);
-                break;
+                return new TouchCommand(fileSystem).execute(args);
             case "mkdir":
-                new MakeDirectoryCommand(fileSystem).execute(args);
-                break;
+                return new MakeDirectoryCommand(fileSystem).execute(args);
             case "rm":
-                new RemoveCommand(fileSystem).execute(args);
-                break;
+                return new RemoveCommand(fileSystem).execute(args);
             default:
-                System.out.println("Command not found");
+                return "Command not found";
         }
     }
 

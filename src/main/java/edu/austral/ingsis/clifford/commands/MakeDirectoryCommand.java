@@ -11,12 +11,12 @@ public class MakeDirectoryCommand implements Command {
     }
 
     @Override
-    public void execute(String[] args) {
+    public String execute(String[] args) {
         if (isInvalidInput(args)) {
-            System.out.println("Invalid input");
-            return;
+            return "Invalid input";
         }
         fileSystem.getCurrentDirectory().addFileSystemItem(new Directory(args[0], fileSystem.getCurrentDirectory()));
+        return "'" + args[0] + "' file created";
     }
 
     private boolean isInvalidInput(String[] args) {

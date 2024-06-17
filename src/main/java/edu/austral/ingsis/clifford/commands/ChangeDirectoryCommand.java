@@ -12,15 +12,16 @@ public class ChangeDirectoryCommand implements Command{
     }
 
     @Override
-    public void execute(String args[]) {
+    public String execute(String[] args) {
         if (isInvalidInput(args)) {
-            System.out.println("Invalid input");
-            return;
+            return "Invalid input";
         }
         if (args[0].equals(".")) {
             fileSystem.setCurrentDirectory(fileSystem.getCurrentDirectory());
+            return "Moved to directory: '" + fileSystem.getCurrentDirectory().getName() + "'";
         } else if (args[0].equals("..")) {
             fileSystem.setCurrentDirectory(fileSystem.getCurrentDirectory().getParent());
+            return "Moved to directory: '" + fileSystem.getCurrentDirectory().getParent().getName() + "'";
         } else if (args[0].contains("/")) {
             Directory currentDirectory = fileSystem.getRoot();
             String[] directories = args[0].split("/");
@@ -33,18 +34,19 @@ public class ChangeDirectoryCommand implements Command{
                 }
             }
             if (!currentDirectory.equals(directories[directories.length - 1])) {
-                System.out.println("Directory not found");
+                return "Directory not found";
             } else {
                 fileSystem.setCurrentDirectory(currentDirectory);
+                return "Moved to directory: '" + currentDirectory.getName() + "'";
             }
         } else {
             for (FileSystemItem file : fileSystem.getCurrentDirectory().getFileSystemItems()) {
                 if (file instanceof Directory && file.getName().equals(args[0])) {
                     fileSystem.setCurrentDirectory((Directory) file);
-                    return;
+                    return "Moved to directory: '" + fileSystem.getCurrentDirectory().getName() + "'";
                 }
             }
-            System.out.println("Directory not found");
+            return "Directory not found";
         }
     }
 

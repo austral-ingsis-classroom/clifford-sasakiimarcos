@@ -13,10 +13,9 @@ public class ListCommand implements Command{
         this.fileSystem = fileSystem;
     }
     @Override
-    public void execute(String args[]) {
+    public String execute(String[] args) {
         if (isInvalidInput(args)) {
-            System.out.println("Invalid number of arguments");
-            return;
+            return "Invalid number of arguments";
         }
         StringBuilder output = new StringBuilder();
         if (args.length == 0) {
@@ -32,6 +31,7 @@ public class ListCommand implements Command{
             }
             fileItemsToOutput(filesItems, output);
         }
+        return output.toString();
     }
 
     private void fileItemsToOutput(List<String> filesItems, StringBuilder output) {
