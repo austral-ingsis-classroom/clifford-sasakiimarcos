@@ -31,7 +31,7 @@ public class ListCommand implements Command{
             }
             fileItemsToOutput(filesItems, output);
         }
-        return output.toString();
+        return output.toString().strip();
     }
 
     private void fileItemsToOutput(List<String> filesItems, StringBuilder output) {

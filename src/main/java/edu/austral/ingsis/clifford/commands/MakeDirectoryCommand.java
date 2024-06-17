@@ -16,7 +16,7 @@ public class MakeDirectoryCommand implements Command {
             return "Invalid input";
         }
         fileSystem.getCurrentDirectory().addFileSystemItem(new Directory(args[0], fileSystem.getCurrentDirectory()));
-        return "'" + args[0] + "' file created";
+        return "'" + args[0] + "' directory created";
     }
 
     private boolean isInvalidInput(String[] args) {

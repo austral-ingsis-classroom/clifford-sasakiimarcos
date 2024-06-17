@@ -18,4 +18,9 @@ public class File implements FileSystemItem {
     public Directory getParent() {
         return parent;
     }
+
+    @Override
+    public void setParent(Directory parent) {
+        this.parent = parent;
+    }
 }

@@ -18,13 +18,13 @@ public class RemoveCommand implements Command{
                 return "File not found";
             }
             fileSystem.getCurrentDirectory().removeFileSystemItem(args[0]);
-            return args[0] + " removed";
+            return "'" + args[0] + "' removed";
         } else {
             if (!exists(args[1])) {
                 return "File not found";
             }
             fileSystem.getCurrentDirectory().removeFileSystemItem(args[1]);
-            return args[1] + " removed";
+            return "'" + args[1] + "' removed";
         }
     }
 

@@ -27,6 +27,8 @@ public class CommandLine {
                 return new MakeDirectoryCommand(fileSystem).execute(args);
             case "rm":
                 return new RemoveCommand(fileSystem).execute(args);
+            case "pwd":
+                return new PrintWorkingDirectoryCommand(fileSystem).execute(args);
             default:
                 return "Command not found";
         }

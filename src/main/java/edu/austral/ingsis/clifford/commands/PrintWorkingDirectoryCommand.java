@@ -21,8 +21,8 @@ public class PrintWorkingDirectoryCommand implements Command{
         StringBuilder pwd = new StringBuilder();
         FileSystemItem item = fileSystemItem;
         while (item.getParent() != null) {
-            item = item.getParent();
             pwd.insert(0, "/" + item.getName());
+            item = item.getParent();
         }
         return pwd.toString();
     }

@@ -14,6 +14,7 @@ public class Directory implements FileSystemItem {
 
     public void addFileSystemItem(FileSystemItem file) {
         files.add(file);
+        file.setParent(this);
     }
     public void removeFileSystemItem(String name) {
         for (FileSystemItem file : files) {
@@ -36,5 +37,10 @@ public class Directory implements FileSystemItem {
     @Override
     public Directory getParent() {
         return parent;
+    }
+
+    @Override
+    public void setParent(Directory parent) {
+        this.parent = parent;
     }
 }
