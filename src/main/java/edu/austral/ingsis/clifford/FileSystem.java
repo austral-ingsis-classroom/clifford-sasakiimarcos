@@ -10,7 +10,7 @@ public class FileSystem {
     private Directory root;
 
     public FileSystem() {
-        currentDirectory = new Directory("/");
+        currentDirectory = new Directory("/", null);
         root = currentDirectory;
     }
 

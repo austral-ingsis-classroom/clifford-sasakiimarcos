@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class Directory implements FileSystemItem {
     private ArrayList<FileSystemItem> files;
     private String name;
-    public Directory(String name) {
+    private Directory parent;
+    public Directory(String name, Directory parent) {
         this.name = name;
         this.files = new ArrayList<>();
+        this.parent = parent;
     }
 
     public void addFileSystemItem(FileSystemItem file) {
@@ -29,5 +31,10 @@ public class Directory implements FileSystemItem {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public Directory getParent() {
+        return parent;
     }
 }
