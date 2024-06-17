@@ -10,7 +10,7 @@ public class Directory implements FileSystemItem {
         this.files = new ArrayList<>();
     }
 
-    public void addFile(FileSystemItem file) {
+    public void addFileSystemItem(FileSystemItem file) {
         files.add(file);
     }
 
