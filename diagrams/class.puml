@@ -1,0 +1,62 @@
+@startuml
+
+class FileSystem {
+    + setCurrentDirectory(Directory) : void
+    + getCurrentDirectory() : Directory
+    + getRoot() : Directory
+}
+
+class CommandLine {
+    + execute(String) : String
+}
+
+interface FileSystemItem {
+    + getName() : String
+    + getParent() : Directory
+    + setParent(Directory) : void
+}
+
+class File implements FileSystemItem {
+    + getName() : String
+    + getParent() : Directory
+    + setParent(Directory) : void
+}
+class Directory implements FileSystemItem {
+    + addFileSystemItem(FileSystemItem file) : void
+    + removeFileSystemItem(String name) : void
+    + getFileSystemItems() : ArrayList<FileSystemItem>
+    + getName() : String
+    + getParent() : Directory
+    + setParent(Directory parent) : void
+}
+
+interface Command {
+    + execute(String[] args) : String
+}
+
+class ChangeDirectoryCommand implements Command {
+    + execute(String[] args) : String
+}
+
+class ListCommand implements Command {
+    + execute(String[] args) : String
+}
+
+class MakeDirectoryCommand implements Command {
+    + execute(String[] args) : String
+}
+
+class RemoveCommand implements Command {
+    + execute(String[] args) : String
+}
+
+class TouchCommand implements Command {
+    + execute(String[] args) : String
+}
+
+CommandLine --> Command
+CommandLine o-- FileSystem
+FileSystem o-- Directory
+Command --> FileSystem
+Directory o-> FileSystemItem
+@enduml
