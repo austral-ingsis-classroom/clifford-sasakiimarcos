@@ -7,9 +7,11 @@ import edu.austral.ingsis.clifford.filesystem.FileSystemItem;
 public class FileSystem {
     // Receiver
     private Directory currentDirectory;
+    private Directory root;
 
     public FileSystem() {
-        currentDirectory = new Directory("home");
+        currentDirectory = new Directory("/");
+        root = currentDirectory;
     }
 
     public void setCurrentDirectory(Directory currentDirectory) {
@@ -20,4 +22,7 @@ public class FileSystem {
         return currentDirectory;
     }
 
+    public Directory getRoot() {
+        return root;
+    }
 }
