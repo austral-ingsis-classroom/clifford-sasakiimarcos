@@ -7,19 +7,9 @@ import edu.austral.ingsis.clifford.filesystem.FileSystemItem;
 public class FileSystem {
     // Receiver
     private Directory currentDirectory;
-    private Command command;
 
-    public FileSystem(Command command) {
-        currentDirectory = new Directory("/");
-        this.command = command;
-    }
-
-    public void setCommand(Command command) {
-        this.command = command;
-    }
-
-    public void execute() {
-        command.execute();
+    public FileSystem() {
+        currentDirectory = new Directory("home");
     }
 
     public void setCurrentDirectory(Directory currentDirectory) {

@@ -5,15 +5,13 @@ import edu.austral.ingsis.clifford.filesystem.Directory;
 
 public class MakeDirectory implements Command {
     private final FileSystem fileSystem;
-    private final String name;
 
-    public MakeDirectory(FileSystem fileSystem, String name) {
+    public MakeDirectory(FileSystem fileSystem) {
         this.fileSystem = fileSystem;
-        this.name = name;
     }
 
     @Override
-    public void execute() {
-        fileSystem.getCurrentDirectory().addFileSystemItem(new Directory(name));
+    public void execute(String[] args) {
+        fileSystem.getCurrentDirectory().addFileSystemItem(new Directory(args[0]));
     }
 }

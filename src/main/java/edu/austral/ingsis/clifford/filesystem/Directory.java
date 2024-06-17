@@ -13,6 +13,14 @@ public class Directory implements FileSystemItem {
     public void addFileSystemItem(FileSystemItem file) {
         files.add(file);
     }
+    public void removeFileSystemItem(String name) {
+        for (FileSystemItem file : files) {
+            if (file.getName().equals(name)) {
+                files.remove(file);
+                return;
+            }
+        }
+    }
 
     @Override
     public String getName() {
