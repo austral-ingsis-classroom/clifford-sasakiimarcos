@@ -4,11 +4,12 @@ import edu.austral.ingsis.clifford.FileSystem;
 import edu.austral.ingsis.clifford.filesystem.FileSystemItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class List implements Command{
+public class ListCommand implements Command{
 
     private final FileSystem fileSystem;
-    public List(FileSystem fileSystem) {
+    public ListCommand(FileSystem fileSystem) {
         this.fileSystem = fileSystem;
     }
     @Override
@@ -19,10 +20,10 @@ public class List implements Command{
         }
         StringBuilder output = new StringBuilder();
         if (args.length == 0) {
-            java.util.List<String> filesItems = getFileItems();
+            List<String> filesItems = getFileItems();
             fileItemsToOutput(filesItems, output);
         } else {
-            java.util.List<String> filesItems = getFileItems();
+            List<String> filesItems = getFileItems();
             if (args[0].equals("--ord=asc")) {
                 filesItems.sort(String::compareTo);
             } else {
@@ -33,13 +34,13 @@ public class List implements Command{
         }
     }
 
-    private void fileItemsToOutput(java.util.List<String> filesItems, StringBuilder output) {
+    private void fileItemsToOutput(List<String> filesItems, StringBuilder output) {
         for (String file : filesItems) {
             output.append(file).append(" ");
         }
     }
 
-    private java.util.List<String> getFileItems() {
+    private List<String> getFileItems() {
         ArrayList<String> files = new ArrayList<>();
         for (FileSystemItem file : fileSystem.getCurrentDirectory().getFileSystemItems()) {
             files.add(file.getName());

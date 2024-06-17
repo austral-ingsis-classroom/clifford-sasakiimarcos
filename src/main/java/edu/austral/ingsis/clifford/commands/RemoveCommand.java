@@ -2,9 +2,9 @@ package edu.austral.ingsis.clifford.commands;
 
 import edu.austral.ingsis.clifford.FileSystem;
 
-public class Remove implements Command{
+public class RemoveCommand implements Command{
     private final FileSystem fileSystem;
-    public Remove(FileSystem fileSystem) {
+    public RemoveCommand(FileSystem fileSystem) {
         this.fileSystem = fileSystem;
     }
 

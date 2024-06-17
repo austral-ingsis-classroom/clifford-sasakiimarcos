@@ -2,9 +2,9 @@ package edu.austral.ingsis.clifford.commands;
 
 import edu.austral.ingsis.clifford.FileSystem;
 
-public class ChangeDirectory implements Command{
+public class ChangeDirectoryCommand implements Command{
 
-    public ChangeDirectory(FileSystem fileSystem) {
+    public ChangeDirectoryCommand(FileSystem fileSystem) {
     }
 
 

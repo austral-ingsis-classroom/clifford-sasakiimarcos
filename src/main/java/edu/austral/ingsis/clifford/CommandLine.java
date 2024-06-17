@@ -19,19 +19,19 @@ public class CommandLine {
         String[] args = Arrays.copyOfRange(input, 1, input.length);
         switch (input[0]) {
             case "ls":
-                new List(fileSystem).execute(args);
+                new ListCommand(fileSystem).execute(args);
                 break;
             case "cd":
-                new ChangeDirectory(fileSystem).execute(args);
+                new ChangeDirectoryCommand(fileSystem).execute(args);
                 break;
             case "touch":
-                new Touch(fileSystem).execute(args);
+                new TouchCommand(fileSystem).execute(args);
                 break;
             case "mkdir":
-                new MakeDirectory(fileSystem).execute(args);
+                new MakeDirectoryCommand(fileSystem).execute(args);
                 break;
             case "rm":
-                new Remove(fileSystem).execute(args);
+                new RemoveCommand(fileSystem).execute(args);
                 break;
             default:
                 System.out.println("Command not found");

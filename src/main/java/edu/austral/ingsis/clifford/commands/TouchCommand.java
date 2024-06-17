@@ -3,11 +3,11 @@ package edu.austral.ingsis.clifford.commands;
 import edu.austral.ingsis.clifford.FileSystem;
 import edu.austral.ingsis.clifford.filesystem.File;
 
-public class Touch implements Command{
+public class TouchCommand implements Command{
 
     private FileSystem fileSystem;
 
-    public Touch(FileSystem fileSystem) {
+    public TouchCommand(FileSystem fileSystem) {
         this.fileSystem = fileSystem;
     }
 
