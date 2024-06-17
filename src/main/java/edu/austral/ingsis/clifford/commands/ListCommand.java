@@ -40,6 +40,19 @@ public class ListCommand implements Command{
         }
     }
 
+//    private List<String> getFileItems() {
+//        ArrayList<String> dirs = new ArrayList<>();
+//        ArrayList<String> files = new ArrayList<>();
+//        for (FileSystemItem file : fileSystem.getCurrentDirectory().getFileSystemItems()) {
+//            if (file instanceof edu.austral.ingsis.clifford.filesystem.Directory) {
+//                dirs.add(file.getName());
+//            } else {
+//                files.add(file.getName());
+//            }
+//        }
+//        dirs.addAll(files);
+//        return dirs;
+//    }
     private List<String> getFileItems() {
         ArrayList<String> files = new ArrayList<>();
         for (FileSystemItem file : fileSystem.getCurrentDirectory().getFileSystemItems()) {
