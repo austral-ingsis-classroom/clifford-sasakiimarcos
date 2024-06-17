@@ -16,40 +16,50 @@ public class PrintWorkingDirectoryCommand implements Command{
             System.out.println("Invalid input");
             return;
         }
-        System.out.println(fileSystem.getCurrentDirectory().getName());
+        System.out.println(buildPath(fileSystem.getCurrentDirectory()));
     }
 
-    private String BuildPath(String name) {
+    private String buildPath(FileSystemItem fileSystemItem) {
         StringBuilder pwd = new StringBuilder();
-        pwd.append(fileSystem.getCurrentDirectory().getName());
-        if (name.equals("/")) {
-            return pwd.toString();
-        }
-        for (FileSystemItem fileSystemItem : fileSystem.getRoot().getFileSystemItems()) {
-            if (fileSystemItem instanceof Directory) {
-                StringBuilder path = recursiveBuildPath((Directory) fileSystemItem, name);
-                if (path != null) {
-                    pwd.append(path);
-                }
-            }
+        FileSystemItem item = fileSystemItem;
+        while (item.getParent() != null) {
+            item = item.getParent();
+            pwd.insert(0, "/" + item.getName());
         }
         return pwd.toString();
     }
 
-    private StringBuilder recursiveBuildPath(Directory directory, String name) {
-        if (directory.getName().equals(name)) {
-            return new StringBuilder(directory.getName());
-        }
-        for (FileSystemItem fileSystemItem : fileSystem.getRoot().getFileSystemItems()) {
-            if (fileSystemItem instanceof Directory) {
-                StringBuilder path = recursiveBuildPath((Directory) fileSystemItem, name);
-                if (path != null) {
-                    return new StringBuilder(directory.getName()).append("/").append(path);
-                }
-            }
-        }
-        return null;
-    }
+//    private String BuildPath(String name) {
+//        StringBuilder pwd = new StringBuilder();
+//        pwd.append(fileSystem.getCurrentDirectory().getName());
+//        if (name.equals("/")) {
+//            return pwd.toString();
+//        }
+//        for (FileSystemItem fileSystemItem : fileSystem.getRoot().getFileSystemItems()) {
+//            if (fileSystemItem instanceof Directory) {
+//                StringBuilder path = recursiveBuildPath((Directory) fileSystemItem, name);
+//                if (path != null) {
+//                    pwd.append(path);
+//                }
+//            }
+//        }
+//        return pwd.toString();
+//    }
+//
+//    private StringBuilder recursiveBuildPath(Directory directory, String name) {
+//        if (directory.getName().equals(name)) {
+//            return new StringBuilder(directory.getName());
+//        }
+//        for (FileSystemItem fileSystemItem : fileSystem.getRoot().getFileSystemItems()) {
+//            if (fileSystemItem instanceof Directory) {
+//                StringBuilder path = recursiveBuildPath((Directory) fileSystemItem, name);
+//                if (path != null) {
+//                    return new StringBuilder(directory.getName()).append("/").append(path);
+//                }
+//            }
+//        }
+//        return null;
+//    }
 
     private boolean isInvalidInput(String[] args) {
         return args.length != 0;
