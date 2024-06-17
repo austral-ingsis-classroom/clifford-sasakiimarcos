@@ -20,6 +20,6 @@ public class MakeDirectoryCommand implements Command {
     }
 
     private boolean isInvalidInput(String[] args) {
-        return (args.length != 1) || (args[0].contains("/"));
+        return (args.length != 1) || (args[0].contains("/") || args[0].contains(" "));
     }
 }

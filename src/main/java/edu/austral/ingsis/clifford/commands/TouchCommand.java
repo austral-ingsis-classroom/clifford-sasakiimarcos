@@ -22,7 +22,7 @@ public class TouchCommand implements Command{
     }
 
     private boolean isInvalidInput(String[] args) {
-        return (args.length != 1);
+        return (args.length != 1) || (args[0].contains("/") || args[0].contains(" "));
     }
 
 }
