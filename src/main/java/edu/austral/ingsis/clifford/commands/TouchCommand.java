@@ -17,7 +17,7 @@ public class TouchCommand implements Command{
             System.out.println("Invalid input");
             return;
         }
-        fileSystem.getCurrentDirectory().addFileSystemItem(new File(args[0]));
+        fileSystem.getCurrentDirectory().addFileSystemItem(new File(args[0], fileSystem.getCurrentDirectory()));
         System.out.println("'" + args[0] + "' file created");
     }
 
