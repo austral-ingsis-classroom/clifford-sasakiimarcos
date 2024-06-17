@@ -13,7 +13,16 @@ public class TouchCommand implements Command{
 
     @Override
     public void execute(String args[]) {
+        if (isInvalidInput(args)) {
+            System.out.println("Invalid input");
+            return;
+        }
         fileSystem.getCurrentDirectory().addFileSystemItem(new File(args[0]));
         System.out.println("'" + args[0] + "' file created");
     }
+
+    private boolean isInvalidInput(String[] args) {
+        return (args.length != 1);
+    }
+
 }
