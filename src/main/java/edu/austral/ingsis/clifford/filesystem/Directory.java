@@ -22,6 +22,10 @@ public class Directory implements FileSystemItem {
         }
     }
 
+    public ArrayList<FileSystemItem> getFileSystemItems() {
+        return files;
+    }
+
     @Override
     public String getName() {
         return name;
